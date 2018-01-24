@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InventioModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="InventioModelStoreContainer">
+          <EntitySet Name="Layouts" EntityType="InventioModel.Store.Layouts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Navigation" EntityType="InventioModel.Store.Navigation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pages" EntityType="InventioModel.Store.Pages" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Pages_Layouts" Association="InventioModel.Store.FK_Pages_Layouts">
+            <End Role="Layouts" EntitySet="Layouts" />
+            <End Role="Pages" EntitySet="Pages" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Layouts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="5000" />
+          <Property Name="PreviewUrl" Type="varchar" MaxLength="500" />
+          <Property Name="Body" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Navigation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Path" Type="nvarchar" Nullable="false" MaxLength="2000" />
+          <Property Name="NodeType" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="MetaData" Type="nvarchar(max)" />
+          <Property Name="ObjectId" Type="int" />
+        </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="varchar" MaxLength="100" />
+          <Property Name="Path" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="LayoutId" Type="int" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="PubVersion" Type="varchar" MaxLength="10" />
+          <Property Name="Metadata" Type="varchar(max)" />
+          <Property Name="MetadataVersion" Type="varchar" MaxLength="10" />
+          <Property Name="Action" Type="int" />
+          <Property Name="IdUser" Type="int" />
+        </EntityType>
+        <Association Name="FK_Pages_Layouts">
+          <End Role="Layouts" Type="InventioModel.Store.Layouts" Multiplicity="1" />
+          <End Role="Pages" Type="InventioModel.Store.Pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Layouts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pages">
+              <PropertyRef Name="LayoutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InventioModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InventioEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Layouts" EntityType="InventioModel.Layouts" />
+          <EntitySet Name="Navigation" EntityType="InventioModel.Navigation" />
+          <EntitySet Name="Pages" EntityType="InventioModel.Pages" />
+          <AssociationSet Name="FK_Pages_Layouts" Association="InventioModel.FK_Pages_Layouts">
+            <End Role="Layouts" EntitySet="Layouts" />
+            <End Role="Pages" EntitySet="Pages" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Layouts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="5000" Unicode="false" FixedLength="false" />
+          <Property Name="PreviewUrl" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Pages" Relationship="InventioModel.FK_Pages_Layouts" FromRole="Layouts" ToRole="Pages" />
+        </EntityType>
+        <EntityType Name="Navigation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="NodeType" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="MetaData" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ObjectId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="LayoutId" Type="Int32" Nullable="false" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="PubVersion" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Metadata" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="MetadataVersion" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Action" Type="Int32" />
+          <Property Name="IdUser" Type="Int32" />
+          <NavigationProperty Name="Layouts" Relationship="InventioModel.FK_Pages_Layouts" FromRole="Pages" ToRole="Layouts" />
+        </EntityType>
+        <Association Name="FK_Pages_Layouts">
+          <End Role="Layouts" Type="InventioModel.Layouts" Multiplicity="1" />
+          <End Role="Pages" Type="InventioModel.Pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Layouts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pages">
+              <PropertyRef Name="LayoutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InventioModelStoreContainer" CdmEntityContainer="InventioEntities">
+          <EntitySetMapping Name="Layouts">
+            <EntityTypeMapping TypeName="InventioModel.Layouts">
+              <MappingFragment StoreEntitySet="Layouts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PreviewUrl" ColumnName="PreviewUrl" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Navigation">
+            <EntityTypeMapping TypeName="InventioModel.Navigation">
+              <MappingFragment StoreEntitySet="Navigation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="NodeType" ColumnName="NodeType" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MetaData" ColumnName="MetaData" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="InventioModel.Pages">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LayoutId" ColumnName="LayoutId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PubVersion" ColumnName="PubVersion" />
+                <ScalarProperty Name="Metadata" ColumnName="Metadata" />
+                <ScalarProperty Name="MetadataVersion" ColumnName="MetadataVersion" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

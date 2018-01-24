@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tc.Inventio.UI", "Tc.Inventio.UI\Tc.Inventio.UI.csproj", "{15753A27-FD9C-46E0-99CC-412E9B8656A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tc.Inventio.Data", "Tc.Inventio.Data\Tc.Inventio.Data.csproj", "{95F5C322-B964-429C-A9BD-0D0BB99D7583}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tc.Inventio.Engine", "Tc.Inventio.Engine\Tc.Inventio.Engine.csproj", "{80A2D3EC-B5C1-44FA-9239-0FED8E85FD7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tc.Inventio.Framework", "Tc.Inventio.Framework\Tc.Inventio.Framework.csproj", "{A5E06448-F116-4E9F-9846-D31FC800203B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tc.Inventio.WebParts", "Tc.Inventio.WebParts\Tc.Inventio.WebParts.csproj", "{D7906D0A-415D-41B7-8493-D71482B52050}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Tc.Inventio.BBDD", "Tc.Inventio.BBDD\Tc.Inventio.BBDD.sqlproj", "{82A90601-8E80-4F6E-9BF8-63A20B4DA0F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine.Core", "RazorEngine.Core\RazorEngine.Core.csproj", "{D268F86D-2DAB-4329-A75F-3BCF6D5BCDC4}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tcvtfs:8080/tfs/proyectos%20web
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Tc.Inventio.UI\\Tc.Inventio.UI.csproj
+		SccProjectName1 = Tc.Inventio.UI
+		SccLocalPath1 = Tc.Inventio.UI
+		SccProjectUniqueName2 = Tc.Inventio.Data\\Tc.Inventio.Data.csproj
+		SccProjectName2 = Tc.Inventio.Data
+		SccLocalPath2 = Tc.Inventio.Data
+		SccProjectUniqueName3 = Tc.Inventio.Engine\\Tc.Inventio.Engine.csproj
+		SccProjectName3 = Tc.Inventio.Engine
+		SccLocalPath3 = Tc.Inventio.Engine
+		SccProjectUniqueName4 = Tc.Inventio.Framework\\Tc.Inventio.Framework.csproj
+		SccProjectName4 = Tc.Inventio.Framework
+		SccLocalPath4 = Tc.Inventio.Framework
+		SccProjectUniqueName5 = Tc.Inventio.WebParts\\Tc.Inventio.WebParts.csproj
+		SccProjectName5 = Tc.Inventio.WebParts
+		SccLocalPath5 = Tc.Inventio.WebParts
+		SccProjectUniqueName6 = Tc.Inventio.BBDD\\Tc.Inventio.BBDD.sqlproj
+		SccProjectName6 = Tc.Inventio.BBDD
+		SccLocalPath6 = Tc.Inventio.BBDD
+		SccProjectUniqueName7 = RazorEngine.Core\\RazorEngine.Core.csproj
+		SccProjectName7 = RazorEngine.Core
+		SccLocalPath7 = RazorEngine.Core
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15753A27-FD9C-46E0-99CC-412E9B8656A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15753A27-FD9C-46E0-99CC-412E9B8656A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15753A27-FD9C-46E0-99CC-412E9B8656A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15753A27-FD9C-46E0-99CC-412E9B8656A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95F5C322-B964-429C-A9BD-0D0BB99D7583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95F5C322-B964-429C-A9BD-0D0BB99D7583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95F5C322-B964-429C-A9BD-0D0BB99D7583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95F5C322-B964-429C-A9BD-0D0BB99D7583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80A2D3EC-B5C1-44FA-9239-0FED8E85FD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A2D3EC-B5C1-44FA-9239-0FED8E85FD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A2D3EC-B5C1-44FA-9239-0FED8E85FD7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A2D3EC-B5C1-44FA-9239-0FED8E85FD7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5E06448-F116-4E9F-9846-D31FC800203B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E06448-F116-4E9F-9846-D31FC800203B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E06448-F116-4E9F-9846-D31FC800203B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E06448-F116-4E9F-9846-D31FC800203B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7906D0A-415D-41B7-8493-D71482B52050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7906D0A-415D-41B7-8493-D71482B52050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7906D0A-415D-41B7-8493-D71482B52050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7906D0A-415D-41B7-8493-D71482B52050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82A90601-8E80-4F6E-9BF8-63A20B4DA0F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82A90601-8E80-4F6E-9BF8-63A20B4DA0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82A90601-8E80-4F6E-9BF8-63A20B4DA0F3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{82A90601-8E80-4F6E-9BF8-63A20B4DA0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82A90601-8E80-4F6E-9BF8-63A20B4DA0F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82A90601-8E80-4F6E-9BF8-63A20B4DA0F3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D268F86D-2DAB-4329-A75F-3BCF6D5BCDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D268F86D-2DAB-4329-A75F-3BCF6D5BCDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D268F86D-2DAB-4329-A75F-3BCF6D5BCDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D268F86D-2DAB-4329-A75F-3BCF6D5BCDC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,140 @@
+﻿@model Tc.Inventio.UI.Models.PagesModel
+
+@{
+    ViewBag.Title = "Pages";
+}
+
+
+<h2>Páginas</h2>
+
+<!-- Árbol de páginas -->
+<div id="jstree_div">
+
+    Árbol de navegación
+
+    @if ( Model != null && Model.Navigation != null)
+    {
+        @Html.Partial("PartialNavigationNode", Model.Navigation)
+    }
+
+</div>
+
+
+<div id="comandos-nav">
+
+    <p>
+        <span>Objeto seleccionado: </span><span id="lbl_obj"></span><br />
+        <span>Ubicación seleccionada: </span><span id="lbl_path"></span>
+    </p>
+
+    <ul>
+        <li>Cargar archivo</li>
+        <li><a href="#" id="lnk-addfolder">Añadir carpeta</a></li>
+        <li><a href="#" id="lnk-addpage">Añadir página</a></li>
+        <li><a href="#" id="lnk-removepage">Eliminar página</a></li>
+        @*      
+        <li>Copiar</li>
+        <li>Cortar</li>
+        <li>Pegar</li>
+        *@
+    </ul>
+
+</div>
+
+<div id="add-folder" class="dialog">
+
+    @using (Html.BeginForm("Pages", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="hidden" id="hdn-nodetype" name="Type" />
+        <input type="hidden" id="hdn-path"     name="Path"/>
+        <input type="hidden" id="hdn-objectid" name="ObjectId"/>
+        <input type="hidden" id="hdn-parentid" name="ParentId"/>
+        <input type="hidden" id="hdn-action"   name="Action" value="action-add-folder" />
+        
+        <label for="txt-foldername"></label><input id="txt-foldername" type="text" name="Title" />
+        
+        <input type="submit" value="Create folder" />
+        <input type="button" value="Cancelar" class="class-cancel" />
+    }
+
+</div>
+
+<div id="add-page" class="dialog">
+
+    @using (Html.BeginForm("Pages", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="hidden" id="hdn-nodetype" name="Type" />
+        <input type="hidden" id="hdn-path"     name="Path"/>
+        <input type="hidden" id="hdn-objectid" name="ObjectId"/>
+        <input type="hidden" id="hdn-parentid" name="ParentId"/>
+        <input type="hidden" id="hdn-action"   name="Action" value="action-add-page" />
+        
+        <label for="txt-foldername"></label><input id="txt-pagename" type="text" name="Title" /> <br />
+        <label>Layout</label>@Html.DropDownList("LayoutId", Model.Layouts);<br />
+        
+        <input type="submit" value="Create page" />
+        <input type="button" value="Cancelar" class="class-cancel" />
+    }
+
+</div>
+
+<div id="remove-page" class="dialog">
+
+    @using (Html.BeginForm("Pages", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="hidden" id="hdn-nodetype" name="Type" />
+        <input type="hidden" id="hdn-path"     name="Path"/>
+        <input type="hidden" id="hdn-objectid" name="ObjectId"/>
+        <input type="hidden" id="hdn-parentid" name="ParentId"/>
+        <input type="hidden" id="hdn-action"   name="Action" value="action-remove-page" />
+        
+        @*<label for="txt-foldername"></label><input id="txt-pagename" type="text" name="Title" /> <br />
+        <label>Layout</label>@Html.DropDownList("LayoutId", Model.Layouts);<br />*@
+        
+        <input type="submit" value="Delete page" />
+        <input type="button" value="Cancelar" class="class-cancel" />
+    }
+
+</div>
+
+
+
+
+@section scripts
+{
+    <link rel="stylesheet" href="/Scripts/themes/default/style.min.css" />
+    <script src="/Scripts/jstree.min.js"></script>
+    <script>
+
+        $(function () {
+
+            // TREE
+            $('#jstree_div').jstree({
+                "core" : { "multiple" : false },
+                "plugins": ["wholerow", "checkbox"]
+            });
+
+            $('#jstree_div').on("changed.jstree", function (e, data) {
+                //debugger;
+                $('#lbl_obj').text(data.node.li_attr['data-nodetype']);
+                $('#lbl_path').text(data.node.li_attr['data-path']);
+
+                $('input[name="Type"]').val(data.node.li_attr['data-nodetype']);
+                $('input[name="Path"]').val(data.node.li_attr['data-path']);
+                $('input[name="ObjectId"]').val(data.node.li_attr['data-objectid']);
+                $('input[name="ParentId"]').val(data.node.li_attr['data-id']);
+            });
+
+            // DISPLAY
+            $('#add-folder').hide(); $('#lnk-addfolder').click(function () { $('#add-folder').show(); });
+            $('#add-page').hide(); $('#lnk-addpage').click(function () { $('#add-page').show(); });
+            $('#remove-page').hide(); $('#lnk-removepage').click(function () { $('#remove-page').show(); });
+
+            // CLOSE WINDOW
+            $('.class-cancel').click(function () {
+                $(this).parents('.dialog').hide();
+            });
+        });
+
+    </script>
+}

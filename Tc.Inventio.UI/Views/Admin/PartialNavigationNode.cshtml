@@ -1,0 +1,16 @@
+﻿@model Tc.Inventio.Data.Entities.InventioNavigationNode
+
+<ul>
+    @if (Model != null)
+    { 
+        <li data-id="@Model.Id" data-nodetype="@Model.NodeType" data-objectid="@Model.ObjectId" data-path="@Model.Url" data-jstree='@Html.Raw(Model.data_jstree)' > @Model.Title
+            @if (Model.ChildNodes != null && Model.ChildNodes.Count > 0)
+            {
+                foreach (Tc.Inventio.Data.Entities.InventioNavigationNode subnode in Model.ChildNodes)
+                {
+                    @Html.Partial("PartialNavigationNode", subnode )
+                }
+            }
+        </li> 
+    }
+</ul>

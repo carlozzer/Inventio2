@@ -1,0 +1,37 @@
+﻿@model List<Tc.Inventio.Data.Entities.InventioLayout>
+
+@{
+    ViewBag.Title = "Layouts";
+}
+
+<h2>Layouts</h2>
+
+
+
+<h3>Cargar un LAYOUT</h3>
+<div>
+   
+        @using (Html.BeginForm("Layouts", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="file" />
+            <input type="submit" value="Upload layout" />
+        }
+</div>
+
+<h3>Listado de layouts cargados</h3>
+<ul>
+     
+    @if (Model != null && Model.Count > 0)
+    {   
+        foreach (Tc.Inventio.Data.Entities.InventioLayout layout in Model)
+        {
+            <li><span>@Html.Raw(layout.Title)</span><span>@Html.ActionLink("Eliminar", "DeleteLayout", "admin", new { id=layout.Id }, null)</span></li>
+        }
+    }
+    else
+    {
+        <li><span>No hay layouts</span></li>
+    }
+    
+    
+</ul>
